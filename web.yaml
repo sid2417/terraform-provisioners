@@ -1,0 +1,15 @@
+- name: playbook for niginx installation through provisioners
+  host: all
+  become: true
+  tasks:
+  - name: niginx installtion
+    ansible.builtin.dnf:
+      name: nginx
+      state: installed
+  
+  - name: niginx service is starting and enabling
+    ansible.builtin.service:
+      name: nginx
+      state: started
+      enabled: yes
+    
